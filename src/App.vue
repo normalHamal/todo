@@ -68,7 +68,7 @@ export default {
       let distance = this.minDuration - (new Date() - this.timeStart);
       if (distance > 0) {
         // 如果整个loading动画持续时间少于最少时长则推迟结束
-        return setTimeout(this.hide.bind(this), distance);
+        return setTimeout(this.stopLoading.bind(this), distance);
       }
 
       this.loading = false;
