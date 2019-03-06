@@ -54,9 +54,10 @@ export default {
     };
   },
   created() {
-    this.initLottie();
-    this.fetchTasks().then(() => {
-      this.stopLoading();
+    this.initLottie().then(() => {
+      this.fetchTasks().then(() => {
+        this.stopLoading();
+      });
     });
   },
   methods: {
@@ -75,7 +76,7 @@ export default {
     },
     initLottie() {
       let self = this;
-      this.$Api.fetchJson("/loading.json").then(json => {
+      return this.$Api.fetchJson("/loading.json").then(json => {
         self.lottieInstance = lottie.loadAnimation({
           container: self.$refs.lottie,
           renderer: "svg",
